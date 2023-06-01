@@ -23,6 +23,7 @@
         :data-item-description="item.description"
         :data-item-image="item.image"
         :data-item-name="item.name"
+        :data-item-url="`/products/${item.id}`"
       >
         <div class="relative">
           <NuxtImg
@@ -39,6 +40,7 @@
               :data-item-description="item.description"
               :data-item-image="item.image"
               :data-item-name="item.name"
+              :data-item-url="`/products/${item.id}`"
             >
               <ShoppingBagIcon class="h-6 w-6 text-primary-200" />
             </button>
