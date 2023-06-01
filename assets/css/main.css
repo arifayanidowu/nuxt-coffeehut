@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    h1 {
+      @apply text-2xl;
+    }
+    h2 {
+      @apply text-xl;
+    }
+    p {
+        @apply text-base
+    }
+}
+
+@layer components {
+  .link {
+    @apply relative hover:text-yellow-900 transition-all duration-300
+  }
+  .link-before {
+    @apply before:absolute before:-bottom-4 before:w-full before:h-[0.15rem] before:opacity-0 hover:before:opacity-100 before:bg-black before:duration-300 before:transition-all
+  }
+  .link-active {
+    @apply text-yellow-900 underline underline-offset-[1.2rem] decoration-[2.5px]
+  }
+
+}
