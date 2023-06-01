@@ -35,6 +35,6 @@
   @apply !border !border-gray-300 !rounded-md px-4 py-4 w-full focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-transparent
 }
 
-.snipcart-featured-payment-methods--no-background .snipcart-featured-payment-methods__title {
+.snipcart-featured-payment-methods__title {
   display: none;
 }

@@ -1,5 +1,14 @@
 <template>
-  <div class="text-center">
+  <div class="text-center relative">
+    <div class="absolute left-5 top-5">
+      <button
+        class="bg-white rounded-md inline-flex gap-2 p-2 focus:outline-none focus:ring focus:ring-offset-2 focus:ring-orange-100 focus:ring-offset-orange-800"
+        @click="$router.back()"
+      >
+        <ArrowLeftIcon class="h-6 w-6 text-primary-200" />
+        Back
+      </button>
+    </div>
     <!-- Product image -->
     <NuxtImg
       :src="item?.image"
@@ -30,6 +39,8 @@
 </template>
 
 <script setup lang="ts">
+import { ArrowLeftIcon } from "@heroicons/vue/24/outline";
+
 const route = useRoute();
 const items = useProducts();
 

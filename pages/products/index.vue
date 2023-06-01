@@ -13,17 +13,11 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
       <div
         role="button"
-        disabled
         tabindex="-1"
         v-for="item in filteredItems"
         :key="item.id"
-        class="snipcart-add-item bg-white rounded-md group shadow-md overflow-hidden cursor-pointer hover:shadow-lg active:shadow-inner active:bg-gray-100 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-        :data-item-id="item.id"
-        :data-item-price="item.price"
-        :data-item-description="item.description"
-        :data-item-image="item.image"
-        :data-item-name="item.name"
-        :data-item-url="`/products/${item.id}`"
+        class="bg-white rounded-md group shadow-md overflow-hidden cursor-pointer hover:shadow-lg active:shadow-inner active:bg-gray-100 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+        @click="router.push(`/products/${item.id}`)"
       >
         <div class="relative">
           <NuxtImg
@@ -58,6 +52,8 @@
 <script setup lang="ts">
 definePageMeta({ middleware: "auth" });
 import { ShoppingBagIcon } from "@heroicons/vue/24/outline";
+
+const router = useRouter();
 
 const query = ref("");
 const items = useProducts();
