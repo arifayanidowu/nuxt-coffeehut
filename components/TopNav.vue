@@ -31,7 +31,7 @@
           v-else
           >Sign in</NuxtLink
         >
-        <Badge>
+        <Badge v-if="session?.user">
           <IconButton
             class="snipcart-checkout rounded-full bg-transparent active:bg-slate-50 dark:active:bg-slate-800 p-2 border border-spacing-2 border-slate-100 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-1 focus:ring-white focus:dark:ring-slate-600 focus:ring-offset-1 focus:ring-offset-gray-400 focus:dark:ring-offset-slate-600 transition-all duration-300"
           >
