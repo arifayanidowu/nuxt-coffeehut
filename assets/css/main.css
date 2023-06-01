@@ -24,5 +24,17 @@
   .link-active {
     @apply text-yellow-900 underline underline-offset-[1.2rem] decoration-[2.5px]
   }
+}
 
+
+.snipcart-button-primary {
+  @apply bg-orange-600 text-white px-4 py-4 rounded-md hover:bg-orange-700 transition-all duration-300
+}
+
+.snipcart-overwrite .snipcart-payment-form {
+  @apply !border !border-gray-300 !rounded-md px-4 py-4 w-full focus:outline-none focus:ring-2 focus:ring-orange-600 focus:border-transparent
+}
+
+.snipcart-featured-payment-methods--no-background .snipcart-featured-payment-methods__title {
+  display: none;
 }
