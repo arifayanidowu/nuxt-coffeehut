@@ -24,7 +24,6 @@
         :data-item-image="item.image"
         :data-item-name="item.name"
         :data-item-url="`/products/${item.id}`"
-        @click="router.push(`/products/${item.id}`)"
       >
         <div class="relative">
           <NuxtImg
@@ -59,7 +58,6 @@
 <script setup lang="ts">
 definePageMeta({ middleware: "auth" });
 import { ShoppingBagIcon } from "@heroicons/vue/24/outline";
-const router = useRouter();
 
 const query = ref("");
 const items = useProducts();
