@@ -6,13 +6,16 @@ export default defineEventHandler(async (event) => {
     case "order.completed":
       // Do something
       console.log("Order completed:", snipcartEvent.content.items);
+      subscription = snipcartEvent.content.items;
       break;
     case "order.status.changed":
       // Do something
       console.log("Order status changed:", snipcartEvent.content.items);
+      subscription = snipcartEvent.content.items;
       break;
     case "order.paymentStatus.changed":
       console.log("Order payment status changed:", snipcartEvent.content.items);
+      subscription = snipcartEvent.content.items;
       // Do something
       break;
     case "order.trackingNumber.changed":
@@ -20,6 +23,7 @@ export default defineEventHandler(async (event) => {
         "Order tracking number changed:",
         snipcartEvent.content.items
       );
+      subscription = snipcartEvent.content.items;
       // Do something
       break;
     case "order.refund.created":
@@ -28,11 +32,17 @@ export default defineEventHandler(async (event) => {
       break;
     case "order.notification.created":
       console.log("Order notification created:", snipcartEvent.content.items);
+      subscription = snipcartEvent.content.items;
       // Do something
       break;
     default:
       console.log("Default:", snipcartEvent.content.items);
+      subscription = snipcartEvent.content.items;
       // Do something
       break;
   }
+  return {
+    statusCode: 200,
+    body: subscription,
+  };
 });
