@@ -2,10 +2,10 @@
   <div class="text-center relative">
     <div class="absolute left-5 top-5">
       <button
-        class="bg-white rounded-md inline-flex gap-2 p-2 focus:outline-none focus:ring focus:ring-offset-2 focus:ring-orange-100 focus:ring-offset-orange-800"
+        class="bg-orange-600 border border-transparent text-white text-sm rounded-md inline-flex items-center gap-2 py-2 px-3 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-orange-600"
         @click="$router.back()"
       >
-        <ArrowLeftIcon class="h-6 w-6 text-primary-200" />
+        <ArrowLeftIcon class="h-3 w-3 text-inherit" />
         Back
       </button>
     </div>
