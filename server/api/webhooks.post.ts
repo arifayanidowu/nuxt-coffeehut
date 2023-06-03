@@ -3,7 +3,12 @@ import { getServerSession } from "#auth";
 export default defineEventHandler(async (event) => {
   const snipcartEvent = await readBody(event);
   const session = await getServerSession(event);
+
   let subscription;
+
+  if (!session) {
+    throw createError({ statusMessage: "Unauthenticated", statusCode: 403 });
+  }
 
   switch (snipcartEvent.eventName) {
     case "order.completed":
