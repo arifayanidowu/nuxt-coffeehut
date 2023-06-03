@@ -1,3 +1,5 @@
+import { prisma } from "../utils/db/prisma";
+
 export default defineEventHandler(async (event) => {
   const snipcartEvent = await readBody(event);
   let subscription;
@@ -15,7 +17,7 @@ export default defineEventHandler(async (event) => {
           trackingNumber: subscription.content.trackingNumber,
           invoiceNumber: subscription.content.invoiceNumber,
           createdOn: subscription.createdOn,
-          quantity: subscription.itemsCount,
+          quantity: subscription.content.itemsCount,
         },
       });
       break;
