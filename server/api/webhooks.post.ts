@@ -1,5 +1,8 @@
+import { getServerSession } from "#auth";
+
 export default defineEventHandler(async (event) => {
   const snipcartEvent = await readBody(event);
+  const session = await getServerSession(event);
   let subscription;
 
   switch (snipcartEvent.eventName) {
@@ -7,7 +10,7 @@ export default defineEventHandler(async (event) => {
       subscription = snipcartEvent;
       await prisma.order.create({
         data: {
-          userEmail: subscription.content.email,
+          userEmail: session?.user?.email,
           items: subscription.content.items,
           paymentStatus: subscription.content.paymentStatus,
           status: subscription.content.status,
