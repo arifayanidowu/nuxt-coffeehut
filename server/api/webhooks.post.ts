@@ -1,5 +1,3 @@
-import { prisma } from "../utils/db/prisma";
-
 export default defineEventHandler(async (event) => {
   const snipcartEvent = await readBody(event);
   let subscription;
