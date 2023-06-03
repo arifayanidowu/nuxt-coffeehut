@@ -4,41 +4,116 @@ export default defineEventHandler(async (event) => {
 
   switch (snipcartEvent.eventName) {
     case "order.completed":
-      // Do something
-      console.log("Order completed:", snipcartEvent.content.items);
-      subscription = snipcartEvent.content.items;
+      subscription = snipcartEvent;
+      await prisma.order.create({
+        data: {
+          userEmail: subscription.content.email,
+          items: subscription.content.items,
+          paymentStatus: subscription.content.paymentStatus,
+          status: subscription.content.status,
+          orderEvent: subscription.eventName,
+          trackingNumber: subscription.content.trackingNumber,
+          invoiceNumber: subscription.content.invoiceNumber,
+          createdOn: subscription.createdOn,
+          quantity: subscription.itemsCount,
+        },
+      });
       break;
     case "order.status.changed":
-      // Do something
-      console.log("Order status changed:", snipcartEvent.content.items);
-      subscription = snipcartEvent.content.items;
+      subscription = snipcartEvent;
+      await prisma.order.create({
+        data: {
+          userEmail: subscription.content.email,
+          items: subscription.content.items,
+          paymentStatus: subscription.content.paymentStatus,
+          status: subscription.content.status,
+          orderEvent: subscription.eventName,
+          trackingNumber: subscription.content.trackingNumber,
+          invoiceNumber: subscription.content.invoiceNumber,
+          createdOn: subscription.createdOn,
+          quantity: subscription.itemsCount,
+        },
+      });
       break;
     case "order.paymentStatus.changed":
-      console.log("Order payment status changed:", snipcartEvent.content.items);
-      subscription = snipcartEvent.content.items;
-      // Do something
+      subscription = snipcartEvent;
+      await prisma.order.create({
+        data: {
+          userEmail: subscription.content.email,
+          items: subscription.content.items,
+          paymentStatus: subscription.content.paymentStatus,
+          status: subscription.content.status,
+          orderEvent: subscription.eventName,
+          trackingNumber: subscription.content.trackingNumber,
+          invoiceNumber: subscription.content.invoiceNumber,
+          createdOn: subscription.createdOn,
+          quantity: subscription.itemsCount,
+        },
+      });
       break;
     case "order.trackingNumber.changed":
-      console.log(
-        "Order tracking number changed:",
-        snipcartEvent.content.items
-      );
-      subscription = snipcartEvent.content.items;
-      // Do something
+      subscription = snipcartEvent;
+      await prisma.order.create({
+        data: {
+          userEmail: subscription.content.email,
+          items: subscription.content.items,
+          paymentStatus: subscription.content.paymentStatus,
+          status: subscription.content.status,
+          orderEvent: subscription.eventName,
+          trackingNumber: subscription.content.trackingNumber,
+          invoiceNumber: subscription.content.invoiceNumber,
+          createdOn: subscription.createdOn,
+          quantity: subscription.itemsCount,
+        },
+      });
       break;
     case "order.refund.created":
-      console.log("Order refund created:", snipcartEvent.content.items);
-      // Do something
+      subscription = snipcartEvent;
+      await prisma.order.create({
+        data: {
+          userEmail: subscription.content.email,
+          items: subscription.content.items,
+          paymentStatus: subscription.content.paymentStatus,
+          status: subscription.content.status,
+          orderEvent: subscription.eventName,
+          trackingNumber: subscription.content.trackingNumber,
+          invoiceNumber: subscription.content.invoiceNumber,
+          createdOn: subscription.createdOn,
+          quantity: subscription.itemsCount,
+        },
+      });
       break;
     case "order.notification.created":
-      console.log("Order notification created:", snipcartEvent.content.items);
-      subscription = snipcartEvent.content.items;
-      // Do something
+      subscription = snipcartEvent;
+      await prisma.order.create({
+        data: {
+          userEmail: subscription.content.email,
+          items: subscription.content.items,
+          paymentStatus: subscription.content.paymentStatus,
+          status: subscription.content.status,
+          orderEvent: subscription.eventName,
+          trackingNumber: subscription.content.trackingNumber,
+          invoiceNumber: subscription.content.invoiceNumber,
+          createdOn: subscription.createdOn,
+          quantity: subscription.itemsCount,
+        },
+      });
       break;
     default:
-      console.log("Default:", snipcartEvent.content.items);
-      subscription = snipcartEvent.content.items;
-      // Do something
+      subscription = snipcartEvent;
+      await prisma.order.create({
+        data: {
+          userEmail: subscription.content.email,
+          items: subscription.content.items,
+          paymentStatus: subscription.content.paymentStatus,
+          status: subscription.content.status,
+          orderEvent: subscription.eventName,
+          trackingNumber: subscription.content.trackingNumber,
+          invoiceNumber: subscription.content.invoiceNumber,
+          createdOn: subscription.createdOn,
+          quantity: subscription.itemsCount,
+        },
+      });
       break;
   }
   return {

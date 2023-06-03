@@ -1,16 +1,24 @@
 <template>
   <div class="px-10 py-4">
-    <input
-      type="search"
-      placeholder="Search products"
-      v-model="query"
-      class="border w-full py-4 my-4 rounded-md focus:outline-none focus:border-transparent focus:ring focus:ring-offset-2 focus:ring-orange-100 focus:ring-offset-orange-800"
-    />
+    <label for="search" class="relative flex justify-center items-center">
+      <input
+        id="search"
+        type="search"
+        placeholder="Search products"
+        v-model="query"
+        class="border w-full py-4 my-4 rounded-md focus:outline-none focus:border-transparent focus:ring focus:ring-offset-2 focus:ring-orange-100 focus:ring-offset-orange-800"
+      />
+      <MagnifyingGlassIcon class="absolute top-1/3.5 right-4 h-5 w-5 text-gray-400" />
+    </label>
 
     <h2 class="text-2xl font-semibold">Products</h2>
     <div class="border-b my-2"></div>
     <!-- Card -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
+    <TransitionGroup
+      name="list"
+      tag="div"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4"
+    >
       <div
         role="button"
         tabindex="-1"
@@ -45,14 +53,13 @@
           <p class="text-gray-500">${{ item.price?.toFixed(2) }}</p>
         </div>
       </div>
-    </div>
+    </TransitionGroup>
   </div>
 </template>
 
 <script setup lang="ts">
 definePageMeta({ middleware: "auth" });
-import { ShoppingBagIcon } from "@heroicons/vue/24/outline";
-
+import { MagnifyingGlassIcon, ShoppingBagIcon } from "@heroicons/vue/24/outline";
 const router = useRouter();
 
 const query = ref("");
@@ -62,3 +69,15 @@ const filteredItems = computed(() => {
   return items.value.filter((item) => item.name.toLowerCase().includes(query.value));
 });
 </script>
+
+<style scoped lang="scss">
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease-out;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+</style>

@@ -48,6 +48,20 @@ model User {
   sessions      Session[]
 }
 
+model Order {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  userEmail      String   @unique
+  paymentStatus  String
+  status         String
+  quantity       Int
+  orderEvent     String
+  trackingNumber String?
+  invoiceNumber  String?
+  items          Json[]
+  startDate      DateTime @default(now())
+  createdOn      DateTime
+}
+
 model VerificationToken {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
   identifier String

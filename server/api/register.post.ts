@@ -1,5 +1,5 @@
 import * as bcrypt from "bcrypt";
-import { prisma } from "./auth/[...]";
+import { prisma } from "../utils/db/prisma";
 
 export default defineEventHandler(async (event) => {
   try {
