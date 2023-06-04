@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
       subscription = snipcartEvent;
       await prisma.order.create({
         data: {
-          userEmail: subscription.content?.email,
+          userEmail: subscription.content.items[0].customFields[0].value,
           items: subscription.content.items,
           paymentStatus: subscription.content.paymentStatus,
           status: subscription.content.status,
