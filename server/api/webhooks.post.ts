@@ -19,6 +19,42 @@ export default defineEventHandler(async (event) => {
           quantity: subscription.content.itemsCount,
           loggedInUserEmail:
             subscription.content.items[0].customFields[0].value,
+          token: subscription.content.token,
+        },
+      });
+      break;
+    case "order.status.changed":
+      subscription = snipcartEvent;
+      await prisma.order.update({
+        where: {
+          token: subscription.content.token,
+        },
+        data: {
+          status: subscription.content.status,
+          orderEvent: subscription.eventName,
+        },
+      });
+      break;
+    case "order.paymentStatus.changed":
+      subscription = snipcartEvent;
+      await prisma.order.update({
+        where: {
+          token: subscription.content.token,
+        },
+        data: {
+          paymentStatus: subscription.content.paymentStatus,
+          orderEvent: subscription.eventName,
+        },
+      });
+    case "order.trackingNumber.changed":
+      subscription = snipcartEvent;
+      await prisma.order.update({
+        where: {
+          token: subscription.content.token,
+        },
+        data: {
+          trackingNumber: subscription.content.trackingNumber,
+          orderEvent: subscription.eventName,
         },
       });
       break;

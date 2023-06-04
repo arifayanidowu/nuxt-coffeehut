@@ -61,6 +61,7 @@ model Order {
   startDate         DateTime @default(now())
   createdOn         DateTime
   loggedInUserEmail String?
+  token             String?  @unique
 }
 
 model VerificationToken {
