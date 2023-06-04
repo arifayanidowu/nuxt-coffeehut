@@ -50,7 +50,7 @@ model User {
 
 model Order {
   id             String   @id @default(auto()) @map("_id") @db.ObjectId
-  userEmail      String   @unique
+  userEmail      String
   paymentStatus  String
   status         String
   quantity       Int
@@ -60,6 +60,7 @@ model Order {
   items          Json[]
   startDate      DateTime @default(now())
   createdOn      DateTime
+  customFields   Json[]
 }
 
 model VerificationToken {

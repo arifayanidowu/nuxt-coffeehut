@@ -32,6 +32,9 @@
       :data-item-image="item.image"
       :data-item-name="item.name"
       :data-item-url="`/products/${item.id}`"
+      :data-item-custom1-name="`Logged In User Email`"
+      :data-item-custom1-type="'hidden'"
+      :data-item-custom1-value="user?.email"
     >
       Add to cart
     </button>
@@ -43,6 +46,9 @@ import { ArrowLeftIcon } from "@heroicons/vue/24/outline";
 
 const route = useRoute();
 const items = useProducts();
+const { getSession } = useAuth();
+
+const { user } = await getSession();
 
 const item = computed(() => {
   return items.value.find((item) => item.id === Number(route.params.id));

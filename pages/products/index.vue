@@ -43,6 +43,9 @@
               :data-item-image="item.image"
               :data-item-name="item.name"
               :data-item-url="`/products/${item.id}`"
+              :data-item-custom1-name="`Logged In User Email`"
+              :data-item-custom1-type="'hidden'"
+              :data-item-custom1-value="user?.email"
             >
               <ShoppingBagIcon class="h-6 w-6 text-primary-200" />
             </button>
@@ -60,7 +63,11 @@
 <script setup lang="ts">
 definePageMeta({ middleware: "auth" });
 import { MagnifyingGlassIcon, ShoppingBagIcon } from "@heroicons/vue/24/outline";
+
+const { getSession } = useAuth();
 const router = useRouter();
+
+const { user } = await getSession();
 
 const query = ref("");
 const items = useProducts();
