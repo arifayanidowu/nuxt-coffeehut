@@ -49,18 +49,18 @@ model User {
 }
 
 model Order {
-  id             String   @id @default(auto()) @map("_id") @db.ObjectId
-  userEmail      String
-  paymentStatus  String
-  status         String
-  quantity       Int
-  orderEvent     String
-  trackingNumber String?
-  invoiceNumber  String?
-  items          Json[]
-  startDate      DateTime @default(now())
-  createdOn      DateTime
-  customFields   Json[]
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  userEmail         String
+  paymentStatus     String
+  status            String
+  quantity          Int
+  orderEvent        String
+  trackingNumber    String?
+  invoiceNumber     String?
+  items             Json[]
+  startDate         DateTime @default(now())
+  createdOn         DateTime
+  loggedInUserEmail String?
 }
 
 model VerificationToken {

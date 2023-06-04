@@ -17,7 +17,8 @@ export default defineEventHandler(async (event) => {
           invoiceNumber: subscription.content.invoiceNumber,
           createdOn: subscription.createdOn,
           quantity: subscription.content.itemsCount,
-          customFields: subscription.content.customFields,
+          loggedInUserEmail:
+            subscription.content.items[0].customFields[0].value,
         },
       });
       break;
